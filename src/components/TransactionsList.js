@@ -1,7 +1,27 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList({trans, searchedT, handleDelete}) {
+function TransactionsList({searchedT, handleDelete, sortByCat, sortByDesc}) {
+
+  function sortLowToHigh(property) {
+    return function (a, b) {
+        if (a[property] > b[property])
+            return 1;
+        else if (a[property] < b[property])
+            return -1;
+
+        return 0;
+    }
+}
+
+  if (sortByCat) {
+    searchedT.sort(sortLowToHigh("category"))
+  }
+
+  if (sortByDesc) {
+    searchedT.sort(sortLowToHigh("description"))
+  }
+
   return (
     <table className="ui celled striped padded table">
       <tbody>

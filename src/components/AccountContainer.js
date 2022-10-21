@@ -6,6 +6,8 @@ import AddTransactionForm from "./AddTransactionForm";
 function AccountContainer() {
   const [trans, setTrans] = useState([])
   const [search, setSearch] = useState("")
+  const [sortByCat, setSortByCat] = useState(false)
+  const [sortByDesc, setSortByDesc] = useState(false)
 
   const searchedT =
   trans.filter(t=>t.description.toLowerCase().includes(search.toLowerCase()))
@@ -41,6 +43,8 @@ function AccountContainer() {
       <Search
       search={search}
       onSearchChange={handleSearch}
+      setSortByCat={setSortByCat}
+      setSortByDesc={setSortByDesc}
       />
       <AddTransactionForm
       onAddTran={handleAddT}/>
@@ -48,6 +52,8 @@ function AccountContainer() {
       trans={trans}
       searchedT={searchedT}
       handleDelete={handleDelete}
+      sortByCat={sortByCat}
+      sortByDesc={sortByDesc}
       />
     </div>
   );
