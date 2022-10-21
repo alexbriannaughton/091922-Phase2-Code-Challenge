@@ -25,6 +25,17 @@ function AccountContainer() {
     setSearch(s)
   }
 
+  function handleDelete(deletedT){
+    fetch(`http://localhost:8001/transactions/${deletedT.id}`, {
+      method: "DELETE",
+    })
+    .then((r)=>r.json())
+    .then(setTrans(
+      trans.filter((t)=>t.id!==deletedT.id)
+    )
+    )
+  }
+
   return (
     <div>
       <Search
@@ -36,6 +47,7 @@ function AccountContainer() {
       <TransactionsList
       trans={trans}
       searchedT={searchedT}
+      handleDelete={handleDelete}
       />
     </div>
   );
