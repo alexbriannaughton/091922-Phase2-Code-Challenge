@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function AddTransactionForm({onAddTran}) {
-  const [date, setDate] = useState()
+  const [date, setDate] = useState("")
   const [desc, setDesc] = useState("")
   const [category, setCategory] = useState("")
   const [amount, setAmount] = useState()
